@@ -9,7 +9,7 @@ CloudBees does not upload anything else (no source code or images) from the cust
 
 Before the scan, the Mend action connects with the Mend server to get the rules and define some properties, including asset destination path, output path, project, and log level.
 
-If you publish a Docker image in your workflow, this action runs a Mend container scan on the image, and generates a JSON-formatted report, available in the link:https://docs.cloudbees.com/docs/cloudbees-saas-platform/latest/analytics/security-insights[] section of the platform analytics.
+If you publish a Docker image in your workflow, this action runs a Mend container scan on the image, and generates a JSON-formatted report, available in the link:https://docs.cloudbees.com/docs/cloudbees-saas-platform/latest/analytics/security-insights[Security insights] section of the platform analytics.
 
 == Inputs
 
