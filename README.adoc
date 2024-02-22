@@ -1,6 +1,15 @@
 = CloudBees action: Scan with Mend SCA
 
-Use this action to scan a Git repository with the Mend software composition analysis (SCA) scanner. Mend SCA can detect security vulnerabilities in open-source dependencies.
+Use this action to scan a Git repository with the Mend software composition analysis (SCA) scanner.
+Mend SCA can detect security vulnerabilities in open-source dependencies.
+The Mend scanner identifies the library license type used in your project, vulnerabilities in the dependencies, and possible fixes.
+
+The Mend SCA scan task executes within the platform infra, so the only use of the Mend URL and credentials is to fetch the scanning rules and threshold.
+CloudBees does not upload anything else (no source code or images) from the customer.
+
+Before the scan, the Mend action connects with the Mend server to get the rules and define some properties, including asset destination path, output path, project, and log level.
+
+If you publish a Docker image in your workflow, this action runs a Mend container scan on the image, and generates a JSON-formatted report, available in the link:https://docs.cloudbees.com/docs/cloudbees-saas-platform/latest/analytics/security-insights[] section of the platform analytics.
 
 == Inputs
 
