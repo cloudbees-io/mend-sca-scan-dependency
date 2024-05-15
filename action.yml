@@ -15,7 +15,7 @@ runs:
   steps:
     - id: run-orchestrator
       name: mendsca
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/mend-sca-actions:main-a3b55326e1e563a70de7a17ba5e25a0a453bbe24
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/mend-sca-actions:main-d20455f5ddb5e98d7f01e7fa9d7eff34045fd310
       shell: bash
       env:
         CONFIG_JSON: '{\"metaInfo\":{\"url\":\"${{ inputs.server-url }}\",\"username\":\"${{ inputs.username }}\",\"password\":\"NA\",\"client_secret\":\"${{ inputs.token }}\",\"toolName\":\"mendsca\"},\"orchestratorInfo\":{\"assetType\":\"CODE\",\"assetIdentifier\":\"${{ cloudbees.scm.repositoryUrl }}\",\"profileIdentifier\":\"${{ cloudbees.scm.branch }}\",\"language\":\"${{ inputs.language }}\"},\"metaInformation\":{\"actor\":\"SCM-Bot\",\"commit_id\":\"${{ cloudbees.scm.sha }}\",\"tenent_info\":\"NA\",\"scanner_type\":\"SCA\"}}' 
