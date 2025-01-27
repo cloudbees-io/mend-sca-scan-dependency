@@ -32,18 +32,18 @@ runs:
         # fetch checkedout repo url and branch into assetIdentifier and profileIdentifier
         apt-get update
         apt-get install -y git
-        
+
         assetIdentifier=$(git config --get remote.origin.url)
         currentBranch=$(git branch | grep "*")
         profileIdentifier=${currentBranch:2}
 
 
-       CONFIG_JSON='{\"metaInfo\":{\"url\":\"${{ inputs.server-url }}\",\"username\":\"${{ inputs.username }}\",\"password\":\"NA\",\"client_secret\":\"${{ inputs.token }}\",\"toolName\":\"mendsca\"},\"orchestratorInfo\":{\"assetType\":\"CODE\",\"assetIdentifier\":\"'
-       CONFIG_JSON+=${assetIdentifier}
-       CONFIG_JSON+='\",\"profileIdentifier\":\"'
-       CONFIG_JSON+=${profileIdentifier}
-       CONFIG_JSON+='\",\"language\":\"${{ inputs.language }}\"},\"metaInformation\":{\"actor\":\"SCM-Bot\",\"commit_id\":\"${{ cloudbees.scm.sha }}\",\"tenent_info\":\"NA\",\"scanner_type\":\"SCA\"}}'
-  
+        CONFIG_JSON='{\"metaInfo\":{\"url\":\"${{ inputs.server-url }}\",\"username\":\"${{ inputs.username }}\",\"password\":\"NA\",\"client_secret\":\"${{ inputs.token }}\",\"toolName\":\"mendsca\"},\"orchestratorInfo\":{\"assetType\":\"CODE\",\"assetIdentifier\":\"'
+        CONFIG_JSON+=${assetIdentifier}
+        CONFIG_JSON+='\",\"profileIdentifier\":\"'
+        CONFIG_JSON+=${profileIdentifier}
+        CONFIG_JSON+='\",\"language\":\"${{ inputs.language }}\"},\"metaInformation\":{\"actor\":\"SCM-Bot\",\"commit_id\":\"${{ cloudbees.scm.sha }}\",\"tenent_info\":\"NA\",\"scanner_type\":\"SCA\"}}'
+
         cd /app/
         /bin/bash -c "java -jar /app/mend-sca-analyzer.jar & while ! nc -z localhost 5001; do sleep 1; done && /app/orchestrator -scanConfig \"${CONFIG_JSON}\" execute-analyser && exit"
 
