@@ -16,7 +16,7 @@ runs:
     - id: run-orchestrator
       name: mendsca
       # latest image
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/mend-sca-actions:main-2cf05cb5f07e37f4f9433205ba1cd8d87f13c32e
+      uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/actions/mend-sca-actions:CBP-21415-048898596bb7a64435634a0405446f681b709018
       shell: bash
       env:
         RUN_ID: ${{ cloudbees.run_id }}
